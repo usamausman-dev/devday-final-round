@@ -8,10 +8,10 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { green } from '@mui/material/colors';
 import axios from 'axios';
-
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import AddTask from '@/Components/AddTask';
+import Tasks from '@/Components/Tasks';
 
 
 
@@ -65,22 +65,32 @@ const stdId = () => {
 
 
 
-    // useEffect(() => {
-    //     if (router.query.studentid) {
-    //         axios.post('/api/getstdbyid', { stdId: router.query.studentid })
-    //             .then(function (response) {
-    //                 if (response.status === 201) {
-    //                     setStudents(response.data.data.students)
-    //                 }
-    //             })
-    //             .catch(function (error) {
-    //                 console.log(error.response);
-    //             });
-    //     }
+    useEffect(() => {
+        if (router.query.studentid) {
+            // axios.post('/api/fetchtask', { StudentClassId: router.query.studentid })
+            //     .then(function (response) {
+            //         if (response.status === 201) {
+            //             // setStudents(response.data.data.students)
+            //             console.log(response.data)
+            //         }
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error.response);
+            //     });
+
+            // axios.get('http://localhost:3000/api/fetchtask')
+            //     .then(function (response) {
+            //         // setMembers(response.data)
+            //         console.log(response.data)
+            //     }).catch((e) => {
+            //         console.log(e)
+            //     })
+
+        }
 
 
 
-    // }, [router.query.studentid])
+    }, [router.query.studentid])
 
 
 
@@ -117,6 +127,7 @@ const stdId = () => {
                         </Tabs>
                     </Box>
                     <TabPanel value={value} index={0}>
+                        <Tasks />
                         {/* <Workitems StdID={router.query.studentid} /> */}
                     </TabPanel>
                     <TabPanel value={value} index={1}>

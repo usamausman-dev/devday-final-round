@@ -32,15 +32,11 @@ export default function AddTask({ stddataid }) {
     // const [members, setMembers] = useState([])
     const router = useRouter();
 
-    let status = ['open', 'In Progress', 'closed']
 
     const [open, setOpen] = useState(false);
-    const [person, setPerson] = useState(members[0]);
-    const [projectStatus, setProjectStatus] = useState(status[0]);
+    const [taskName, setTaskName] = useState('');
+    const [Description, setDescription] = useState('');
 
-    const [name, setName] = useState('');
-    const [nature, setNature] = useState('')
-    const [startdate, setStartDate] = useState(new Date())
     const [enddate, setEndDate] = useState(new Date())
 
     const handleClickOpen = () => {
@@ -51,10 +47,10 @@ export default function AddTask({ stddataid }) {
         setOpen(false);
     };
 
-    function AddWorkItemHandler() {
+    function AddTaskHandler() {
 
-        let payload = { stddataid, name, nature, startdate, enddate, projectStatus, person }
-        console.log(first)
+        let payload = { classID: stddataid, name: taskName, description: Description, enddate }
+        console.log(payload)
 
         // axios.post('/api/createtask', payload)
         //     .then(function (response) {
@@ -96,54 +92,20 @@ export default function AddTask({ stddataid }) {
 
                         <div className='grid grid-cols-1 gap-5'>
                             <div className='flex flex-col  '>
-                                <label htmlFor="name">Name</label>
-                                <input required value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" id="name" placeholder='Work Item Name' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
+                                <label htmlFor="name">Task Name</label>
+                                <input required value={taskName} onChange={(e) => setTaskName(e.target.value)} type="text" name="taskname" id="taskname" placeholder='Task Name' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
+                            </div>
+                            <div className='flex flex-col  '>
+                                <label htmlFor="name">Description</label>
+                                <textarea required value={Description} onChange={(e) => setDescription(e.target.value)} type="text" name="Description" id="Description" placeholder='Description' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
                             </div>
 
-
-
                             <div className='flex flex-col  '>
-                                <label htmlFor="nature">Nature</label>
-                                <input required type="text" value={nature} onChange={(e) => setNature(e.target.value)} name="nature" id="nature" placeholder='Nature' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
-                            </div>
-
-
-
-                            <div className='flex flex-col  '>
-                                <label htmlFor="startdate">Start Date</label>
-                                <input required type='datetime-local' onChange={(e) => setStartDate(e.target.value)} name="startdate" id="startdate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
-                            </div>
-
-
-
-                            <div className='flex flex-col  '>
-                                <label htmlFor="enddate">End Date</label>
+                                <label htmlFor="enddate">Deadline</label>
                                 <input required type='datetime-local' onChange={(e) => setEndDate(e.target.value)} name="enddate" id="enddate" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
                             </div>
 
-
-
-                            <div className='flex flex-col  '>
-                                <label htmlFor="members">Assign To</label>
-
-
-                                <select required id='members' name='members' onChange={(e) => setPerson(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 ">
-                                    {
-                                        members.map((val, key) => <option key={key} value={val}>{val}</option>)
-                                    }
-                                </select>
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <label htmlFor="Status">Status</label>
-
-                                <select required id='Status' name='Status' onChange={(e) => setProjectStatus(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 ">
-                                    {
-                                        status.map((val, key) => <option key={key} value={val}>{val}</option>)
-                                    }
-                                </select>
-                            </div>
-                            <button onClick={AddWorkItemHandler} className='bg-green-600 px-3 py-2 rounded text-white'>Add WorkItem</button>
+                            <button onClick={AddTaskHandler} className='bg-green-600 px-3 py-2 rounded text-white'>Add Task</button>
                         </div>
                     </DialogContentText>
                 </DialogContent>

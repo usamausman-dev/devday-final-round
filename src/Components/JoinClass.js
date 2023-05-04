@@ -29,22 +29,21 @@ export default function JoinStdclass() {
         e.preventDefault();
         const payload = {
             person: session.user.email,
-            stdclassdataid: stdclass
+            classID: stdclass
         }
 
-        console.log(payload)
 
-        // axios.post('/api/addmembers', payload)
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setOpen(false)
-        //             alert('added Successfully')
-        //             console.log(response)
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.log("while getting", error.response);
-        //     });
+
+        axios.post('/api/createclass', payload)
+            .then(function (response) {
+                if (response.status === 201) {
+                    alert("Joined Created Successfully")
+                    setOpen(false)
+                }
+            })
+            .catch(function (error) {
+                alert(error.response);
+            });
 
     }
 
