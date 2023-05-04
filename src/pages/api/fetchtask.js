@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
 
-        const checkExisting = await Task.findOne()
+        const checkExisting = await Task.find()
         if (checkExisting) {
             res.status(201).json({ status: true, data: checkExisting })
         }
