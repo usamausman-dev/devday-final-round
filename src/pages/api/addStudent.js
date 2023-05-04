@@ -1,31 +1,27 @@
 import connectMongo from "../../../database/conn";
-import { Project } from "../../../model/Schema";
+import { StudentClass } from "../../../model/Schema";
 
 export default async function handler(req, res) {
     connectMongo().catch(error => res.json({ error: "Connection failed" }))
     if (req.method === 'POST') {
         if (!req.body) return res.status(404).json({ error: 'Dont Have form Data' })
         console.log(req.body)
-        const { person, projectdataid } = req.body;
+        const { person, classID } = req.body;
 
-        const checkExisting = await Project.findOne({ _id: projectdataid })
-        const getProject = await Project.findOne({ _id: projectdataid })
+        const checkExisting = await StudentClass.findOne({ _id: classID })
+        const getStudentClass = await StudentClass.findOne({ _id: classID })
 
         if (!checkExisting) {
-            return res.status(404).json({ message: 'Project not found' })
+            return res.status(404).json({ message: 'StudentClass not found' })
         }
 
 
         const updated = await checkExisting.members.push(person)
-        // console.log("updated ===> ", updated)
-        // console.log("Existing ===> ", checkExisting)
 
-
-
-        Project.updateOne(getProject, checkExisting)
+        StudentClass.updateOne(getStudentClass, checkExisting)
             .then((result) => {
                 console.log(result);
-                res.status(201).json({ status: true, project: result });
+                res.status(201).json({ status: true, StudentClass: result });
             })
             .catch((err) => {
                 console.log(err);
