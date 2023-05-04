@@ -7,9 +7,9 @@ export default async function handler(req, res) {
 
     if (req.method === 'POST') {
         if (!req.body) return res.status(404).json({ error: 'Dont Have form Data' })
-        const { className } = req.body
+        const { classTeacher } = req.body
 
-        const checkExisting = await StudentClass.find({ className })
+        const checkExisting = await StudentClass.find({ classTeacher })
         if (checkExisting) {
             res.status(201).json({ status: true, data: checkExisting })
         }

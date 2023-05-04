@@ -34,24 +34,23 @@ export default function AddStdclass() {
         e.preventDefault();
 
         const payload = {
-            teacherName: session.user.email,
-            stdclassName: stdclass,
+            classTeacher: session.user.email,
+            className: stdclass,
             members: [session.user.email],
         }
-
         console.log(payload)
 
 
-        // axios.post('/api/createstdclass', payload)
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             alert("Stdclass Created Successfully")
-        //             setOpen(false)
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         alert(error.response);
-        //     });
+        axios.post('/api/createclass', payload)
+            .then(function (response) {
+                if (response.status === 201) {
+                    alert("Stdclass Created Successfully")
+                    setOpen(false)
+                }
+            })
+            .catch(function (error) {
+                alert(error.response);
+            });
     }
 
     return (
