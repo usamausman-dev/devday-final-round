@@ -11,22 +11,21 @@ const userSchema = new Schema({
 const Users = models.user || model('user', userSchema);
 export default Users
 
-const projectSchema = new Schema({
-    projectAdmin: String,
-    projectName: String,
+const classSchema = new Schema({
+    classTeacher: String,
+    className: String,
     members: Array
 })
 
-export const Project = models.project || model('project', projectSchema)
+export const StudentClass = models.class || model('class', classSchema)
 
 const TaskSchema = new Schema({
-    projectID: String,
+    classID: String,
     name: String,
-    nature: String,
-    startdate: Date,
+    description: String,
     enddate: Date,
-    projectStatus: String,
-    person: String
 });
+
+
 
 export const Task = models.task || model('task', TaskSchema)
