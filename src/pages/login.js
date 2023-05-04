@@ -36,7 +36,7 @@ function Login() {
         <div className='flex h-screen bg-green-500'>
             <div className='m-auto bg-slate-50 rounded-md w-3/5  grid lg:grid-cols-2'>
 
-                <div className='sm:hidden rounded  lg:block bg-[url("https://www.systemsltd.com/wp-content/uploads/2019/10/systems-limited-first-half-of-2019-img.jpg")] '>
+                <div className='sm:hidden rounded  lg:block bg-[url("https://media.wired.com/photos/63d1b65584464089ca2fc5fb/master/w_2560%2Cc_limit/ChatGPT-Is-Coming-To-Classrooms-Business-1298396060.jpg")] '>
                 </div>
 
                 <div className='right flex flex-col justify-evenly'>

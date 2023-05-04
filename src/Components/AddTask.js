@@ -52,16 +52,16 @@ export default function AddTask({ stddataid }) {
         let payload = { classID: stddataid, name: taskName, description: Description, enddate }
         console.log(payload)
 
-        // axios.post('/api/createtask', payload)
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setOpen(false);
-        //             router.reload();
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.response);
-        //     });
+        axios.post('/api/createtask', payload)
+            .then(function (response) {
+                if (response.status === 201) {
+                    setOpen(false);
+                    router.reload();
+                }
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            });
 
     }
 

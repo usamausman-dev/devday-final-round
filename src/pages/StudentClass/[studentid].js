@@ -55,6 +55,7 @@ const stdId = () => {
 
     const [value, setValue] = useState(0);
     const [students, setStudents] = useState(['uusman004@gmail.com'])
+    const [tasks, setTasks] = useState([])
 
 
     const handleChange = (event, newValue) => {
@@ -78,13 +79,14 @@ const stdId = () => {
             //         console.log(error.response);
             //     });
 
-            // axios.get('http://localhost:3000/api/fetchtask')
-            //     .then(function (response) {
-            //         // setMembers(response.data)
-            //         console.log(response.data)
-            //     }).catch((e) => {
-            //         console.log(e)
-            //     })
+            axios.get('http://localhost:3000/api/fetchtask')
+                .then(function (response) {
+                    // setMembers(response.data)
+
+                    setTasks(response.data.data)
+                }).catch((e) => {
+                    console.log(e)
+                })
 
         }
 
@@ -127,7 +129,7 @@ const stdId = () => {
                         </Tabs>
                     </Box>
                     <TabPanel value={value} index={0}>
-                        <Tasks />
+                        <Tasks tasks={tasks} />
                         {/* <Workitems StdID={router.query.studentid} /> */}
                     </TabPanel>
                     <TabPanel value={value} index={1}>
