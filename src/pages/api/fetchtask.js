@@ -1,16 +1,13 @@
 import connectMongo from "../../../database/conn";
-import { StudentClass } from "../../../model/Schema";
+import { Task } from "../../../model/Schema";
 
 export default async function handler(req, res) {
     connectMongo().catch(error => res.json({ error: "Connection failed" }))
 
-    if (req.method === 'POST') {
-        if (!req.body) return res.status(404).json({ error: 'Dont Have form Data' })
-        console.log("Yehh", req.body)
-        const { StudentClassId } = req.body
+    if (req.method === 'GET') {
 
 
-        const checkExisting = await StudentClass.findOne({ _id: StudentClassId })
+        const checkExisting = await Task.findOne()
         if (checkExisting) {
             res.status(201).json({ status: true, data: checkExisting })
         }
