@@ -3,8 +3,8 @@ import CreateClass from '../Components/CreateClass'
 import JoinStdclass from '@/Components/JoinClass'
 import ClassCards from '@/Components/ClassCards'
 import Link from 'next/link'
-import { useSession } from "next-auth/react"
 import axios from 'axios'
+import { useSession, signOut } from 'next-auth/react'
 
 
 const dashboard = () => {
@@ -42,6 +42,7 @@ const dashboard = () => {
                 <div className='flex gap-10'>
                     <JoinStdclass />
                     <CreateClass />
+                    <button onClick={() => signOut({ callbackUrl: '/login' })}>Logout</button>
                 </div>
 
             </nav>
