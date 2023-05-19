@@ -13,23 +13,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AddTask({ stddataid }) {
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/api/getusers')
-    //         .then(function (response) {
-    //             setMembers(response.data.users)
-    //         }).catch((e) => {
-    //             console.log(e)
-    //         })
-
-
-    // }, [])
 
     let members = [
-        'uusman004@gmail.com',
-        'babar@gmail.com'
+        'babar@gmail.com',
+        'uusman004@gmail.com'
     ]
 
-    // const [members, setMembers] = useState([])
     const router = useRouter();
 
 
@@ -52,16 +41,16 @@ export default function AddTask({ stddataid }) {
         let payload = { classID: stddataid, name: taskName, description: Description, enddate }
         console.log(payload)
 
-        // axios.post('/api/createtask', payload)
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setOpen(false);
-        //             router.reload();
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.response);
-        //     });
+        axios.post('/api/createtask', payload)
+            .then(function (response) {
+                if (response.status === 201) {
+                    setOpen(false);
+                    router.reload();
+                }
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            });
 
     }
 

@@ -15,6 +15,7 @@ export default NextAuth({
                 const result = await Users.findOne({ email: credentials.email })
 
                 if (!result) {
+                    alert('No User Exists')
                     throw new Error("No User Exists")
                 }
 

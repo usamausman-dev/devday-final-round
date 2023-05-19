@@ -1,6 +1,5 @@
 import connectMongo from "../../../database/conn";
 import { StudentClass } from "../../../model/Schema";
-import mongoose from "mongoose";
 
 export default async function handler(req, res) {
     connectMongo().catch(error => res.json({ error: "Connection failed" }))

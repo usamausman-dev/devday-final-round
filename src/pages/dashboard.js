@@ -9,17 +9,6 @@ import axios from 'axios'
 
 const dashboard = () => {
 
-    // let classData = [
-    //     {
-    //         _id: '123',
-    //         stdclassName: 'hello'
-    //     },
-    //     {
-    //         _id: '123',
-    //         stdclassName: 'hello'
-    //     }
-    // ]
-
 
     const { data: session } = useSession()
     const [classData, setclassData] = useState([])
